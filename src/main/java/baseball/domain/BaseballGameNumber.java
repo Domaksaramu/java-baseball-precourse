@@ -1,64 +1,32 @@
-package baseball.DTO;
+package baseball.domain;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * @params
  * numbers : 숫자 / 위치
- * strikes : 스트라이크 횟수
- * balls : 볼 횟수
- * nothing : 낫싱 횟수
  */
-public class BaseballGameSetDTO {
-    private Set<Integer> numbers;
-    private Integer strikes;
-    private Integer balls;
-    private Integer nothing;
+public class BaseballGameNumber {
+    private Map<Integer, Integer> numbers = new HashMap<>();
 
-    public Set<Integer> getNumbers(){
-        return numbers;
-    }
-
-    public Integer getStrikes(){
-        return strikes;
-    }
-
-    public Integer getBalls(){
-        return balls;
-    }
-
-    public Integer getNothing(){
-        return nothing;
-    }
-
-    public void setNumbers(Set<Integer> numbers) {
+    public void setNumbers(Map<Integer, Integer> numbers) {
         this.numbers = numbers;
     }
 
-    public void setBalls(Integer balls) {
-        this.balls = balls;
+    public Map<Integer, Integer> getNumbers() {
+        return numbers;
+    }
+    public Boolean addNumber(Integer number, Integer index){
+        if(numbers.containsKey(number)){
+            return false;
+        }
+        if(numbers.containsValue(index)){
+            return false;
+        }
+        numbers.put(number,index);
+        return true;
     }
 
-    public void setNothing(Integer nothing) {
-        this.nothing = nothing;
-    }
-
-    public void setStrikes(Integer strikes) {
-        this.strikes = strikes;
-    }
-
-    public String toString(){
-        String result = "";
-        if(balls != 0){
-            result += balls + "볼";
-        }
-        if (strikes != 0){
-            result += " " + strikes +"스트라이크";
-        }
-        if(balls==0 && strikes==0){
-            result = "낫싱";
-        }
-        return result.trim();
-    }
 }
