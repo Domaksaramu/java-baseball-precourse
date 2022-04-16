@@ -35,6 +35,16 @@ public class BassballGameNumberTest {
         assertThat(player.addNumber(3)).isEqualTo(true);
         assertThat(player.addNumber(4)).isEqualTo(false);
         assertThat(player.addNumber(5)).isEqualTo(false);
+    }
+    @Test
+    void oversizeInputListTest(){
+        BaseballGameNumber player1 = new BaseballGameNumber();
+        BaseballGameNumber player2 = new BaseballGameNumber(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,5,4));
 
+        player1.setNumberList(list);
+
+        assertThat(player1.getNumberList().size()).isEqualTo(0);
+        assertThat(player2.getNumberList().size()).isEqualTo(0);
     }
 }
