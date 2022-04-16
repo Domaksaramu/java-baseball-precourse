@@ -4,7 +4,7 @@ import baseball.domain.number.BaseballGameNumber;
 
 import java.util.List;
 
-public class BaseBallGame {
+public class BaseballGame {
     private Integer strike = 0;
     private Integer ball = 0 ;
     private Boolean nothing = false;
@@ -56,8 +56,8 @@ public class BaseBallGame {
     }
     public Integer calculateBall(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
         Integer strike = calculateStrikes(thisNumbers, thatNumbers);
-        Integer containdCnt = countContained(thisNumbers, thatNumbers);
-        return containdCnt - strike;
+        Integer containedCnt = countContained(thisNumbers, thatNumbers);
+        return containedCnt - strike;
     }
 
     public void calculateAll(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
