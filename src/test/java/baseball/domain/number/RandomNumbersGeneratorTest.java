@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-public class gRandomNumbersGeneratorTest {
+public class RandomNumbersGeneratorTest {
     @Test
     public void randomNumberListGenerateTest(){
         RandomNumbersGenerator random = new RandomNumbersGenerator();
