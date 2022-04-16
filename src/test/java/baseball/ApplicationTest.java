@@ -28,6 +28,10 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void baseBallDto(){
+
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

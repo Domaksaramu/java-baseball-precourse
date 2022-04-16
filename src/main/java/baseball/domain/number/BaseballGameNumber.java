@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.number;
 
 import java.util.*;
 
@@ -6,17 +6,17 @@ import java.util.*;
  * @params
  */
 public class BaseballGameNumber{
-    private List<Integer> numberList = new ArrayList<>();
-    private final Integer MAX_BASEBALL_NUMBER = 3;
+    protected List<Integer> numberList = new ArrayList<>();
+    public static final Integer MAX_BASEBALL_NUMBER = 3;
 
     public BaseballGameNumber(List<Integer> numberList){this.numberList = numberList;}
     public BaseballGameNumber(){}
 
-    public void setNumbers(List<Integer> numberList) {
+    public void setNumberList(List<Integer> numberList) {
         this.numberList = numberList;
     }
 
-    public List<Integer> getNumbers() {
+    public List<Integer> getNumberList() {
         return numberList;
     }
 

@@ -1,6 +1,7 @@
-package baseball.domain;
+package baseball.domain.number;
 
 
+import baseball.domain.number.BaseballGameNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

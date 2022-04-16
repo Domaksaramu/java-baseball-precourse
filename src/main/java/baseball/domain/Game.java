@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.number.BaseballGameNumber;
+
 public class Game {
     private Integer strike = 0;
     private Integer ball = 0 ;

@@ -1,12 +1,13 @@
-package baseball.domain;
+package baseball.domain.number;
 
+import baseball.domain.number.RandomNumbersGenerator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-public class RandomNumbersGeneratorTest {
+public class gRandomNumbersGeneratorTest {
     @Test
     public void randomNumberListGenerateTest(){
         RandomNumbersGenerator random = new RandomNumbersGenerator();
