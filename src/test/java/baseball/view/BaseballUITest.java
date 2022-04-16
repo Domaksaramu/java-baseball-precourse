@@ -68,7 +68,7 @@ public class BaseballUITest {
         ).isEqualTo(true);
     }
     @Test
-    public void parseUserInputTest(){
+    public void parseUserInputIntoNumbersTest(){
         BaseballUI baseballUI = new BaseballUI();
         String inputStr = "123";
         InputStream inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
@@ -76,7 +76,7 @@ public class BaseballUITest {
         Scanner scanner = new Scanner(System.in);
 
         assertThat(
-                baseballUI.parseUserInput(baseballUI.getUserInput(scanner))
+                baseballUI.parseUserInputIntoNumbers(baseballUI.getUserInput(scanner))
         ).containsExactly(1,2,3);
 
 
@@ -86,7 +86,7 @@ public class BaseballUITest {
         scanner = new Scanner(System.in);
 
         assertThat(
-                baseballUI.parseUserInput(baseballUI.getUserInput(scanner))
+                baseballUI.parseUserInputIntoNumbers(baseballUI.getUserInput(scanner))
         ).containsExactly(9,4,8);
     }
 }
