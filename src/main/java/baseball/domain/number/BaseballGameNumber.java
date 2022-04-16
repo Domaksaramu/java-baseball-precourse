@@ -30,16 +30,31 @@ public class BaseballGameNumber{
     public Boolean checkDuplicateNumber(Integer number){
         return numberList.contains(number);
     }
+    public Integer countDuplicateNumber(Integer number){
+        Integer count = 0;
+        if(numberList.contains(number))
+            count++;
+        return count;
+    }
+    public Integer countExactlyEqualNumber(Integer value, Integer index){
+        Integer count = 0;
+        if(numberList.get(index) == value)
+            count++;
+        return count;
+    }
     public Boolean checkNumberListSize(List<Integer> numberList){
-        return numberList.size()>= MAX_BASEBALL_NUMBER;
+        return numberList.size()> MAX_BASEBALL_NUMBER;
     }
 
     public Boolean addNumber(Integer number){
         if(checkDuplicateNumber(number))
             return false;
-        if(checkNumberListSize(numberList))
+        if(numberList.size()>= MAX_BASEBALL_NUMBER)
             return false;
         numberList.add(number);
         return true;
+    }
+    public Integer getNumberListSize(){
+        return this.numberList.size();
     }
 }

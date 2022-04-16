@@ -1,7 +1,6 @@
 package baseball.domain.number;
 
 
-import baseball.domain.number.BaseballGameNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -47,4 +46,5 @@ public class BassballGameNumberTest {
         assertThat(player1.getNumberList().size()).isEqualTo(0);
         assertThat(player2.getNumberList().size()).isEqualTo(0);
     }
+
 }

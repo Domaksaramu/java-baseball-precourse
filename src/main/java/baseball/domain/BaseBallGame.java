@@ -4,7 +4,7 @@ import baseball.domain.number.BaseballGameNumber;
 
 import java.util.List;
 
-public class Game {
+public class BaseBallGame {
     private Integer strike = 0;
     private Integer ball = 0 ;
     private Boolean nothing = false;

@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 
-public class GameTest {
+public class BaseBallGameTest {
     @Test
     public void calculateStrikeTest(){
         BaseballGameNumber com = new BaseballGameNumber(Arrays.asList(1,2,3));
@@ -14,7 +14,7 @@ public class GameTest {
         BaseballGameNumber player2 = new BaseballGameNumber(Arrays.asList(1,2,4));
         BaseballGameNumber player3 = new BaseballGameNumber(Arrays.asList(3,2,1));
         BaseballGameNumber player4 = new BaseballGameNumber(Arrays.asList(8,3,6));
-        Game game = new Game();
+        BaseBallGame game = new BaseBallGame();
 
         assertThat(game.calculateStrikes(com,player1)).isEqualTo(3);
         assertThat(game.calculateStrikes(com,player2)).isEqualTo(2);
@@ -28,7 +28,7 @@ public class GameTest {
         BaseballGameNumber player2 = new BaseballGameNumber(Arrays.asList(1,2,4));
         BaseballGameNumber player3 = new BaseballGameNumber(Arrays.asList(3,2,1));
         BaseballGameNumber player4 = new BaseballGameNumber(Arrays.asList(8,3,6));
-        Game game = new Game();
+        BaseBallGame game = new BaseBallGame();
 
         assertThat(game.countContained(com,player1)).isEqualTo(3);
         assertThat(game.countContained(com,player2)).isEqualTo(2);
@@ -42,7 +42,7 @@ public class GameTest {
         BaseballGameNumber player2 = new BaseballGameNumber(Arrays.asList(1,2,4));
         BaseballGameNumber player3 = new BaseballGameNumber(Arrays.asList(3,2,1));
         BaseballGameNumber player4 = new BaseballGameNumber(Arrays.asList(8,3,6));
-        Game game = new Game();
+        BaseBallGame game = new BaseBallGame();
 
         assertThat(game.calculateBall(com,player1)).isEqualTo(0);
         assertThat(game.calculateBall(com,player2)).isEqualTo(0);
@@ -56,10 +56,10 @@ public class GameTest {
         BaseballGameNumber player2 = new BaseballGameNumber(Arrays.asList(1,2,4));
         BaseballGameNumber player3 = new BaseballGameNumber(Arrays.asList(3,1,2));
         BaseballGameNumber player4 = new BaseballGameNumber(Arrays.asList(8,4,6));
-        Game game1 = new Game();
-        Game game2 = new Game();
-        Game game3 = new Game();
-        Game game4 = new Game();
+        BaseBallGame game1 = new BaseBallGame();
+        BaseBallGame game2 = new BaseBallGame();
+        BaseBallGame game3 = new BaseBallGame();
+        BaseBallGame game4 = new BaseBallGame();
 
         game1.calculateAll(com,player1);
         game2.calculateAll(com,player2);
