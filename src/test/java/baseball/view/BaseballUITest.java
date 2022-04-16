@@ -96,4 +96,26 @@ public class BaseballUITest {
                 baseballUI.parseUserInputIntoNumbers(baseballUI.getUserInput(scanner))
         ).containsExactly(9,4,8);
     }
+
+    @Test
+    public void parseUserInputIntoExitFlagTest(){
+        BaseballUI baseballUI = new BaseballUI();
+        String inputStr = "1";
+        InputStream inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        Scanner scanner = new Scanner(System.in);
+
+        assertThat(
+                baseballUI.parseUserInputIntoExitFlag(baseballUI.getUserInput(scanner))
+        ).isEqualTo(true);
+
+        inputStr = "2";
+        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        scanner = new Scanner(System.in);
+
+        assertThat(
+                baseballUI.parseUserInputIntoExitFlag(baseballUI.getUserInput(scanner))
+        ).isEqualTo(false);
+    }
 }
