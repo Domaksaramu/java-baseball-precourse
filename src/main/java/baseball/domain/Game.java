@@ -2,6 +2,8 @@ package baseball.domain;
 
 import baseball.domain.number.BaseballGameNumber;
 
+import java.util.List;
+
 public class Game {
     private Integer strike = 0;
     private Integer ball = 0 ;
@@ -30,26 +32,39 @@ public class Game {
     public void setNothing(Boolean nothing) {
         this.nothing = nothing;
     }
-
-    public void calculateStrikes(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+    public void initValues(){
+        strike = 0;
+        ball = 0;
+        nothing = false;
     }
 
-    public Boolean compare(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
-        /*for (Integer number: thatNumbers.getNumbers().keySet()) {
-            if(thisNumbers.getNumbers().containsKey(number)){
-                if(thisNumbers.getNumbers().get(number) == thatNumbers.getNumbers().get(number)){
-                    strike+=1;
-                }
-                else{
-                    ball+=1;
-                }
-            }
-            else{
-                continue;
-            }
+    public Integer calculateStrikes(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+        List<Integer> thatNumbersList = thatNumbers.getNumberList();
+        Integer count = 0;
+        for (int i = 0; i < thisNumbers.getNumberListSize(); i++) {
+            count+=thisNumbers.countExactlyEqualNumber(thatNumbersList.get(i), i);
         }
-        if(strike==0 && ball==0)
-            nothing = true;*/
-        return false;
+        return count;
+    }
+    public Integer countContained(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+        List<Integer> thatNumbersList = thatNumbers.getNumberList();
+        Integer count = 0;
+        for (int i = 0; i < thisNumbers.getNumberListSize(); i++) {
+            count+=thisNumbers.countDuplicateNumber(thatNumbersList.get(i));
+        }
+        return count;
+    }
+    public Integer calculateBall(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+        Integer strike = calculateStrikes(thisNumbers, thatNumbers);
+        Integer containdCnt = countContained(thisNumbers, thatNumbers);
+        return containdCnt - strike;
+    }
+
+    public void calculateAll(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+        initValues();
+        this.strike = calculateStrikes(thisNumbers, thatNumbers);
+        this.ball = calculateBall(thisNumbers, thatNumbers);
+        if(this.strike == 0 && this.ball==0)
+            this.nothing = true;
     }
 }
