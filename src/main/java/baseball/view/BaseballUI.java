@@ -21,6 +21,7 @@ public class BaseballUI {
         }catch (Exception e){
             throw new IllegalArgumentException("잘못된 문자를 입력하셨습니다.");
         }
+        return buffer;
     }
     public Boolean isFlag(String input){
         return (input.equals("1") || input.equals("2"));
