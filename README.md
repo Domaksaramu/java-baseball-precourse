@@ -24,7 +24,8 @@
          2. 2차 안 : LinkedHashSet으로 구성
             - 장점 : 순서O, 중복X 보장
             - Index가 없어 비교시 2depth 요구조건 위반
-         
+         3, 3차 안 : List로 구성
+            - contains로 중복 검사
    2. 난수발생기
    3. 예외
 4. 뷰
