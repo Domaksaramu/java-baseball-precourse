@@ -29,8 +29,11 @@ public class Game {
         this.nothing = nothing;
     }
 
-    public void compare(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
-        for (Integer number: thatNumbers.getNumbers().keySet()) {
+    public void calculateStrikes(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+    }
+
+    public Boolean compare(BaseballGameNumber thisNumbers, BaseballGameNumber thatNumbers){
+        /*for (Integer number: thatNumbers.getNumbers().keySet()) {
             if(thisNumbers.getNumbers().containsKey(number)){
                 if(thisNumbers.getNumbers().get(number) == thatNumbers.getNumbers().get(number)){
                     strike+=1;
@@ -44,6 +47,7 @@ public class Game {
             }
         }
         if(strike==0 && ball==0)
-            nothing = true;
+            nothing = true;*/
+        return false;
     }
 }

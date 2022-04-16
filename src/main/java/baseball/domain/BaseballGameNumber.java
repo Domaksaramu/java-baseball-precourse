@@ -1,32 +1,38 @@
 package baseball.domain;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @params
- * numbers : 숫자 / 위치
  */
-public class BaseballGameNumber {
-    private Map<Integer, Integer> numbers = new HashMap<>();
+public class BaseballGameNumber{
+    private List<Integer> numberList = new ArrayList<>();
+    private final Integer MAX_BASEBALL_NUMBER = 3;
 
-    public void setNumbers(Map<Integer, Integer> numbers) {
-        this.numbers = numbers;
+    public BaseballGameNumber(List<Integer> numberList){this.numberList = numberList;}
+    public BaseballGameNumber(){}
+
+    public void setNumbers(List<Integer> numberList) {
+        this.numberList = numberList;
     }
 
-    public Map<Integer, Integer> getNumbers() {
-        return numbers;
+    public List<Integer> getNumbers() {
+        return numberList;
     }
-    public Boolean addNumber(Integer number, Integer index){
-        if(numbers.containsKey(number)){
+
+    public Boolean checkDuplicateNumber(Integer number){
+        return numberList.contains(number);
+    }
+    public Boolean checkNumberListSize(){
+        return numberList.size()>= MAX_BASEBALL_NUMBER;
+    }
+
+    public Boolean addNumber(Integer number){
+        if(checkDuplicateNumber(number))
             return false;
-        }
-        if(numbers.containsValue(index)){
+        if(checkNumberListSize())
             return false;
-        }
-        numbers.put(number,index);
+        numberList.add(number);
         return true;
     }
-
 }
