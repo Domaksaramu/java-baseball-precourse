@@ -13,11 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseballUITest {
-    public void setUserInput(String input){
-        InputStream inputStream = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
-        System.setIn(inputStream);
-    }
-
     @Test
     public void getUserInputTest(){
         BaseballUI baseballUI = new BaseballUI();
@@ -41,5 +36,33 @@ public class BaseballUITest {
         Scanner scanner2 = new Scanner(System.in);
         assertThatThrownBy(() -> baseballUI.getUserInput(scanner2))
                 .isInstanceOf(InputMismatchException.class);
+    }
+    @Test
+    public void checkInputEnableTest(){
+        BaseballUI baseballUI = new BaseballUI();
+        String inputStr = "123";
+        InputStream inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        Scanner scanner = new Scanner(System.in);
+
+        assertThat(
+                baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
+        ).isEqualTo(true);
+
+        inputStr="1234";
+        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        scanner = new Scanner(System.in);
+        assertThat(
+                baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
+        ).isEqualTo(false);
+
+        inputStr="1";
+        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        scanner = new Scanner(System.in);
+        assertThat(
+                baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
+        ).isEqualTo(true);
     }
 }

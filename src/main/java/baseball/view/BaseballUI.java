@@ -1,5 +1,6 @@
 package baseball.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,8 +17,28 @@ public class BaseballUI {
         String pattern = "[0-9]*";
         return this.scanner.next(pattern);
     }
+    public Boolean isFlag(String input){
+        if(input.length()==1)
+            return true;
+        return false;
+    }
+    public Boolean isNumber(String input){
+        if(input.length()==3)
+            return true;
+        return false;
+    }
+    public Boolean checkInputEnable(String input){
+        if(isNumber(input) || isFlag(input))
+            return true;
+        return false;
+    }
     public List<Integer> parseUserInput(String input){
-        return null;
+        List<Integer> numberList = new ArrayList<>();
+        String[] inputArray = input.split("");
+        for (String s: inputArray ) {
+            numberList.add(Integer.valueOf(s));
+        }
+        return numberList;
     }
 
 }
