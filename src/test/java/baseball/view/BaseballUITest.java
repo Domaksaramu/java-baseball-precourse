@@ -6,7 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,5 +66,27 @@ public class BaseballUITest {
         assertThat(
                 baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
         ).isEqualTo(true);
+    }
+    @Test
+    public void parseUserInputTest(){
+        BaseballUI baseballUI = new BaseballUI();
+        String inputStr = "123";
+        InputStream inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        Scanner scanner = new Scanner(System.in);
+
+        assertThat(
+                baseballUI.parseUserInput(baseballUI.getUserInput(scanner))
+        ).containsExactly(1,2,3);
+
+
+        inputStr = "948";
+        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        scanner = new Scanner(System.in);
+
+        assertThat(
+                baseballUI.parseUserInput(baseballUI.getUserInput(scanner))
+        ).containsExactly(9,4,8);
     }
 }
