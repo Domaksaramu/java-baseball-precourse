@@ -37,7 +37,7 @@ public class BaseballUITest {
         System.setIn(inputStream);
         Scanner scanner2 = new Scanner(System.in);
         assertThatThrownBy(() -> baseballUI.getUserInput(scanner2))
-                .isInstanceOf(InputMismatchException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     public void checkInputEnableTest(){
@@ -51,13 +51,6 @@ public class BaseballUITest {
                 baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
         ).isEqualTo(true);
 
-        inputStr="1234";
-        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
-        System.setIn(inputStream);
-        scanner = new Scanner(System.in);
-        assertThat(
-                baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
-        ).isEqualTo(false);
 
         inputStr="1";
         inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
@@ -66,6 +59,20 @@ public class BaseballUITest {
         assertThat(
                 baseballUI.checkInputEnable(baseballUI.getUserInput(scanner))
         ).isEqualTo(true);
+
+        inputStr="1234";
+        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        Scanner scanner1 = new Scanner(System.in);
+        assertThatThrownBy(() -> baseballUI.checkInputEnable(baseballUI.getUserInput(scanner1)))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        inputStr="3";
+        inputStream = new ByteArrayInputStream(inputStr.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+        Scanner scanner2 = new Scanner(System.in);
+        assertThatThrownBy(() -> baseballUI.checkInputEnable(baseballUI.getUserInput(scanner2)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     public void parseUserInputIntoNumbersTest(){

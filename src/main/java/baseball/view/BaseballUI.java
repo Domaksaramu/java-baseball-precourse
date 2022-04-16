@@ -32,7 +32,7 @@ public class BaseballUI {
     }
     public Boolean checkInputEnable(String input){
         Integer len = input.length();
-        if(checkLength(input))
+        if(!checkLength(input))
             throw new IllegalArgumentException("입력된 숫자열이 너무 길거나 짧습니다.");
         if(input.length()==1 && !isFlag(input))
             throw new IllegalArgumentException("잘못된 종료문자를 입력하셨습니다.");
