@@ -23,23 +23,21 @@ public class BaseballUI {
         }
     }
     public Boolean isFlag(String input){
-        if(input.length()!=1)
-            throw new IllegalArgumentException("종료 문자가 너무 길거나 짧습니다.");
-        if(!input.equals("1")&&!input.equals("2"))
-            throw new IllegalArgumentException("잘못된 문자를 입력하셨습니다.");
-        return input.equals("1");
+        return (input.equals("1") || input.equals("2"));
     }
-    public Boolean isNumber(String input){
-        if(input.length()==3)
-            return true;
-        throw new IllegalArgumentException("입력된 숫자열이 너무 길거나 짧습니다.");
+    public Boolean checkLength(String input){
+        Integer len = input.length();
+        return (len==3) || (len==1);
     }
     public Boolean checkInputEnable(String input){
-        if(isNumber(input) || isFlag(input))
-            return true;
-        return false;
+        Integer len = input.length();
+        if(checkLength(input))
+            throw new IllegalArgumentException("입력된 숫자열이 너무 길거나 짧습니다.");
+        if(input.length()==1 && !isFlag(input))
+            throw new IllegalArgumentException("잘못된 종료문자를 입력하셨습니다.");
+        return true;
     }
-    public List<Integer> parseUserInputIntoNumbers(String input) throws IllegalArgumentException{
+    public List<Integer> parseUserInputIntoNumbers(String input){
         List<Integer> numberList = new ArrayList<>();
         String[] inputArray = input.split("");
         for (String s: inputArray ) {
@@ -48,7 +46,7 @@ public class BaseballUI {
         return numberList;
     }
     public Boolean parseUserInputIntoExitFlag(String input){
-
+        return input.equals("1");
     }
 
 }
