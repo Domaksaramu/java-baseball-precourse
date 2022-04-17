@@ -18,6 +18,7 @@ public class BaseballGameNumber{
     public BaseballGameNumber(){}
 
     public void setNumberList(List<Integer> numberList) {
+        this.numberList = new ArrayList<>();
         if(!checkNumberListSize(numberList))
             throw new IllegalArgumentException("입력된 문자열이 너무 깁니다.");
         Boolean insertFlag = true ;

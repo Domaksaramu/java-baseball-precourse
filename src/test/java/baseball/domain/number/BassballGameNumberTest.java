@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BassballGameNumberTest {
     @Test
@@ -15,16 +16,20 @@ public class BassballGameNumberTest {
         BaseballGameNumber player = new BaseballGameNumber(basePlayerInput);
         assertThat(player.checkDuplicateNumber(1)).isEqualTo(true);
         assertThat(player.checkDuplicateNumber(2)).isEqualTo(true);
-        assertThat(player.checkDuplicateNumber(3)).isEqualTo(false);
+        assertThatThrownBy(() -> player.checkDuplicateNumber(3))
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void duplicatedNumberInputTest(){
         List<Integer> basePlayerInput = new ArrayList<>(Arrays.asList(1,2));
         BaseballGameNumber player = new BaseballGameNumber(basePlayerInput);
-        assertThat(player.addNumber(1)).isEqualTo(false);
-        assertThat(player.addNumber(2)).isEqualTo(false);
+        assertThatThrownBy(() -> player.addNumber(1))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> player.addNumber(2))
+                .isInstanceOf(IllegalArgumentException.class);
         assertThat(player.addNumber(3)).isEqualTo(true);
-        assertThat(player.addNumber(3)).isEqualTo(false);
+        assertThatThrownBy(() -> player.addNumber(3))
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void oversizeInputTest(){
@@ -32,19 +37,22 @@ public class BassballGameNumberTest {
         assertThat(player.addNumber(1)).isEqualTo(true);
         assertThat(player.addNumber(2)).isEqualTo(true);
         assertThat(player.addNumber(3)).isEqualTo(true);
-        assertThat(player.addNumber(4)).isEqualTo(false);
-        assertThat(player.addNumber(5)).isEqualTo(false);
+        assertThatThrownBy(() -> player.addNumber(4))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> player.addNumber(5))
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void oversizeInputListTest(){
         BaseballGameNumber player1 = new BaseballGameNumber();
-        BaseballGameNumber player2 = new BaseballGameNumber(Arrays.asList(1,2,3,4,5,6));
         List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,5,4));
 
-        player1.setNumberList(list);
 
-        assertThat(player1.getNumberList().size()).isEqualTo(0);
-        assertThat(player2.getNumberList().size()).isEqualTo(0);
+        assertThatThrownBy(() -> new BaseballGameNumber(Arrays.asList(1,2,3,4,5,6)))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> player1.setNumberList(list))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }

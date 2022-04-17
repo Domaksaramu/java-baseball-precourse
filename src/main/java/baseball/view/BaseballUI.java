@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BaseballUI {
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner ;
     String pattern = "[0-9]*";
 
 
