@@ -46,8 +46,11 @@ public class BaseballUI {
         }
         return numberList;
     }
-    public Boolean parseUserInputIntoExitFlag(String input){
+    public Boolean parseUserInputIntoContineFlag(String input){
         return input.equals("1");
     }
 
+    public void printOut(String str) {
+        System.out.println(str);
+    }
 }

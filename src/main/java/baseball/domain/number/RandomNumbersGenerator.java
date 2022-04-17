@@ -11,10 +11,7 @@ public class RandomNumbersGenerator {
     public static final Integer MIN_NUMBER_RANGE = 1;
     public static final Integer MAX_NUMBER_RANGE= 9;
 
-    public RandomNumbersGenerator(){
-        randomSeed = System.currentTimeMillis();
-        resetRandomList();
-    }
+    public RandomNumbersGenerator(){}
 
     public void resetRandomList() {
         randomSeed = System.currentTimeMillis();

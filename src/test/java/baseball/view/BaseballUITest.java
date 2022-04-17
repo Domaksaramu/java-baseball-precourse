@@ -106,7 +106,7 @@ public class BaseballUITest {
         Scanner scanner = new Scanner(System.in);
 
         assertThat(
-                baseballUI.parseUserInputIntoExitFlag(baseballUI.getUserInput(scanner))
+                baseballUI.parseUserInputIntoContineFlag(baseballUI.getUserInput(scanner))
         ).isEqualTo(true);
 
         inputStr = "2";
@@ -115,7 +115,7 @@ public class BaseballUITest {
         scanner = new Scanner(System.in);
 
         assertThat(
-                baseballUI.parseUserInputIntoExitFlag(baseballUI.getUserInput(scanner))
+                baseballUI.parseUserInputIntoContineFlag(baseballUI.getUserInput(scanner))
         ).isEqualTo(false);
     }
 }
