@@ -10,17 +10,21 @@ public class BaseballGameNumber{
     public static final Integer MAX_BASEBALL_NUMBER = 3;
 
     public BaseballGameNumber(List<Integer> numberList){
-        if(checkNumberListSize(numberList))
-            return;
+        if(!checkNumberListSize(numberList))
+            throw new IllegalArgumentException("입력된 문자열이 너무 깁니다.");
         this.numberList = numberList;
     }
 
     public BaseballGameNumber(){}
 
     public void setNumberList(List<Integer> numberList) {
-        if(checkNumberListSize(numberList))
-            return;
-        this.numberList = numberList;
+        if(!checkNumberListSize(numberList))
+            throw new IllegalArgumentException("입력된 문자열이 너무 깁니다.");
+        Boolean insertFlag = true ;
+        for (Integer item: numberList) {
+            addNumber(item);
+        }
+
     }
 
     public List<Integer> getNumberList() {
@@ -43,14 +47,14 @@ public class BaseballGameNumber{
         return count;
     }
     public Boolean checkNumberListSize(List<Integer> numberList){
-        return numberList.size()> MAX_BASEBALL_NUMBER;
+        return numberList.size()<= MAX_BASEBALL_NUMBER;
     }
 
     public Boolean addNumber(Integer number){
         if(checkDuplicateNumber(number))
-            return false;
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         if(numberList.size()>= MAX_BASEBALL_NUMBER)
-            return false;
+            throw new IllegalArgumentException("입력된 문자열이 너무 깁니다.");
         numberList.add(number);
         return true;
     }
