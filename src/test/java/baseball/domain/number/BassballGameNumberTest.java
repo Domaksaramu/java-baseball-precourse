@@ -16,8 +16,7 @@ public class BassballGameNumberTest {
         BaseballGameNumber player = new BaseballGameNumber(basePlayerInput);
         assertThat(player.checkDuplicateNumber(1)).isEqualTo(true);
         assertThat(player.checkDuplicateNumber(2)).isEqualTo(true);
-        assertThatThrownBy(() -> player.checkDuplicateNumber(3))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(player.checkDuplicateNumber(3)).isEqualTo(false);
     }
     @Test
     void duplicatedNumberInputTest(){
