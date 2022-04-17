@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.domain.BaseballGame;
 import baseball.domain.number.BaseballGameNumber;
-import baseball.domain.number.RandomNumbersGenerator;
 import baseball.view.BaseballUI;
 
 import java.util.List;
@@ -45,10 +44,14 @@ public class BaseballGameService {
     }
     public Boolean checkRestartGame(Scanner scanner){
         String buffer = null;
+        Boolean restartFlag = false;
         baseballUI.printOut("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         buffer = baseballUI.getUserInput(scanner);
         baseballUI.checkInputEnable(buffer);
 
-        return baseballUI.parseUserInputIntoContineFlag(buffer);
+        restartFlag = baseballUI.parseUserInputIntoContineFlag(buffer);
+        if(!restartFlag)
+            baseballUI.printOut("게임 종료");
+        return restartFlag;
     }
 }
